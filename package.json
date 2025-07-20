@@ -3,6 +3,9 @@
   "module": "index.ts",
   "type": "module",
   "private": true,
+  "scripts": {
+    "build": "bun build ./cli.ts --compile --outfile cli"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
@@ -10,6 +13,8 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "@commander-js/extra-typings": "^14.0.0",
+    "commander": "^14.0.0",
     "minio": "^8.0.5",
     "zod": "^4.0.5"
   }
