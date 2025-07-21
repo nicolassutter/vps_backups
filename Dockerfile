@@ -4,7 +4,9 @@ WORKDIR /app
 
 RUN apk add --no-cache \
     bash \
-    curl
+    curl \
+    libstdc++ \
+    gcc
 
 FROM oven/bun:alpine AS build
 
@@ -19,7 +21,7 @@ COPY . .
 # compile cli.ts to native executable
 RUN bun run build
 
-FROM base as production
+FROM base AS production
 
 WORKDIR /app
 

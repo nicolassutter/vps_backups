@@ -1,6 +1,7 @@
 import { create as tarCreate } from "tar";
 import path from "path";
 import fs from "fs/promises";
+import { accessSync } from "fs";
 import { backupSqlite, uploadToMinio } from "../../utils";
 
 export async function backupVaultwarden(): Promise<void> {
@@ -31,6 +32,16 @@ export async function backupVaultwarden(): Promise<void> {
   }
 
   async function createTarArchive(filesToBackup: string[]): Promise<void> {
+    const files = filesToBackup.filter((file) => {
+      try {
+        accessSync(file);
+        return true;
+      } catch {
+        console.log(`❌ File not found: ${file}`);
+        return false;
+      }
+    });
+
     await tarCreate(
       {
         gzip: true,
@@ -38,7 +49,7 @@ export async function backupVaultwarden(): Promise<void> {
         cwd: "/", // Set working directory to root
         // portable: true,
       },
-      filesToBackup,
+      files,
     );
 
     console.log(`✅ Created archive ${outputTarGz}`);
