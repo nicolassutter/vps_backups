@@ -1,7 +1,7 @@
 BACKUP_DIR="/userdata/vaultwarden" # directory that is actually backed up by backrest, this is inside the backrest container
 TIMESTAMP=$(date +'%Y%m%d_%H%M%S')
 SQLITE_BACKUP_NAME="vw_backup_$TIMESTAMP.sql.gz"
-VW_DIR="/var/lib/docker/volumes/o80w4cwooogw0owk8ko4cck0_vw-data/_data" # directory on the host system where vw data is stored
+VW_DIR="/home/nicolas/dockge/stacks/vaultwarden/data" # directory on the host system where vw data is stored
 VW_DB="db.sqlite3" # name of the SQLite database file
 
 # Ensure backup directory exists
