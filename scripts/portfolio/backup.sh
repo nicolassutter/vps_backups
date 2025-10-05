@@ -1,6 +1,6 @@
 BACKUP_DIR="/userdata/portfolio"
 BACKUP_NAME="portfolio_backup_$(date +'%Y%m%d_%H%M%S').sql.gz"
-PORTFOLIO_DATA_DIR="/var/lib/docker/volumes/t08ogow4c080c4w8w080c4w8_datadir/_data" # on the host system
+PORTFOLIO_DATA_DIR="/home/nicolas/dockge/stacks/minoro/data" # on the host system
 
 mkdir -p $BACKUP_DIR
 
